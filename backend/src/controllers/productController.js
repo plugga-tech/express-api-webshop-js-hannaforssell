@@ -46,16 +46,6 @@ async function create(req, res, next) {
 	}
 }
 
-async function getCategories(req, res, next) {
-	try {
-		let categories = await productService.getCategories(req.body.category);
-		res.json(categories);
-	} catch (err) {
-		console.error(`Error while getting categories`, err.message);
-		next(err);
-	}
-}
-
 async function getByCategory(req, res, next) {
 	try {
 		let products = await productService.getByCategory(req.params.categoryId);
@@ -71,6 +61,5 @@ module.exports = {
 	getMany,
 	getSingle,
 	create,
-	getCategories,
 	getByCategory,
 };

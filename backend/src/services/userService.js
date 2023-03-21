@@ -4,16 +4,12 @@ const mongo = require('./mongoService');
 const collection = () => mongo.connection.collection('users');
 
 async function getMany() {
-    let users = await collection().find({ 'isDeleted': false }).toArray();
-    for(let user of users) {
-		delete user.isDeleted;
-    }
+    let users = await collection().find({ 'isDeleted': false }, { projection: { isDeleted: 0 } }).toArray();
     return users;
 }
 
 async function getSingle(id) {
-    let user = await collection().findOne({ '_id': new ObjectId(id), 'isDeleted': false });
-    delete user.isDeleted;
+    let user = await collection().findOne({ '_id': new ObjectId(id), 'isDeleted': false }, { projection: { isDeleted: 0 } });
 	return user;
 }
 
