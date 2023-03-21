@@ -35,8 +35,7 @@ async function create(req, res, next) {
 		let newUser = {
 			name: req.body.name,
 			email: req.body.email,
-			password: CryptoJS.AES.encrypt(req.body.password, salt).toString(),
-			isDeleted: false
+			password: CryptoJS.AES.encrypt(req.body.password, salt).toString()
 		};
 
 		let result = await userService.create(newUser);
