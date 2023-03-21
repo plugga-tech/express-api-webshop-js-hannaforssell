@@ -14,7 +14,7 @@ Projektet ni klonar har förutom test-rest filerna förberett även en mapp fö
 All data skall sparas i en lokal MongoDB databas. Döp databasen enligt “fornamn-efternamn”.
 
 Det är helt ok att skapa alla produkter med “mock” data, samt att för designens skull använda en “placeholder”-bild för produkterna, dvs att alla produkter har samma bild.
-
+ygt
 
 ### Skillnader mellan G och VG krav:
 
