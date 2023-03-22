@@ -4,8 +4,11 @@ const mongo = require('./mongoService');
 const collection = () => mongo.connection.collection('categories');
 
 async function getMany() {
-    let categories = await collection().find({ 'isDeleted': false }, { projection: { isDeleted: 0 } }).toArray();
-	return categories;
+    return await collection().find({ 'isDeleted': false }, { projection: { isDeleted: 0 } }).toArray();
+}
+
+async function getSingle(id) {
+    return await collection().findOne({ '_id': new ObjectId(id), 'isDeleted': false }, { projection: { isDeleted: 0 } });
 }
 
 async function create(category) {
@@ -15,5 +18,6 @@ async function create(category) {
 
 module.exports = {
 	getMany,
+	getSingle,
 	create
 }

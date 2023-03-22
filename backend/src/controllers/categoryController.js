@@ -1,4 +1,5 @@
 const categoryService = require("../services/categoryService");
+const userService = require("../services/userService");
 
 async function getMany(req, res, next) {
 	try {
@@ -12,6 +13,12 @@ async function getMany(req, res, next) {
 
 async function create(req, res, next) {
 	try {
+		if (!userService.isValid(req.body.token)) {
+			res.status(401);
+			res.json({ message: "invalid token" });
+			return;
+		}
+
 		let newCategory = {
 			name: req.body.name,
 		};

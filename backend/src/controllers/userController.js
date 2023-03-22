@@ -1,12 +1,13 @@
-const { convertToResponseUsers, convertToResponseUser } = require("../mappers/userMapper");
+const { convertToUserResponse, convertToUsersResponse } = require("../mappers/userMapper");
 const userService = require("../services/userService");
 const CryptoJS = require("crypto-js");
 const salt = 'pepper';
+const { v4: uuidv4 } = require('uuid');
 
 async function getMany(req, res, next) {
 	try {
 		let users = await userService.getMany();
-		convertToResponseUsers(users);
+		convertToUsersResponse(users);
 		res.json(users);
 	} catch (err) {
 		console.error(`Error while getting users`, err.message);
@@ -18,7 +19,7 @@ async function getSingle(req, res, next) {
 	try {
 		let user = await userService.getSingle(req.body.id);
 		if (user != null) {
-			convertToResponseUser(user);
+			convertToUserResponse(user);
 			res.json(user);
 		} else {
 			res.status(404);
@@ -60,11 +61,13 @@ async function login(req, res, next) {
 		if (user != null) {
 			const decryptedPassword = CryptoJS.AES.decrypt(user.password, salt).toString(CryptoJS.enc.Utf8);
 			if (decryptedPassword == req.body.password) {
-				res.json({ message: "success" });
+				const token = uuidv4();
+				userService.addToken(token);
+				
+				res.json({ message: "success", token: token });
 				return;
 			}
 		}
-
 		res.status(401);
 		res.json({ message: "Email or password was incorrect" });
 	} catch (err) {

@@ -3,14 +3,14 @@ const mongo = require('./mongoService');
 
 const collection = () => mongo.connection.collection('users');
 
+const tokens = [];
+
 async function getMany() {
-    let users = await collection().find({ 'isDeleted': false }, { projection: { isDeleted: 0 } }).toArray();
-    return users;
+    return await collection().find({ 'isDeleted': false }, { projection: { isDeleted: 0 } }).toArray();
 }
 
 async function getSingle(id) {
-    let user = await collection().findOne({ '_id': new ObjectId(id), 'isDeleted': false }, { projection: { isDeleted: 0 } });
-	return user;
+    return await collection().findOne({ '_id': new ObjectId(id), 'isDeleted': false }, { projection: { isDeleted: 0 } });
 }
 
 async function create(user) {
@@ -19,7 +19,6 @@ async function create(user) {
 		user.isDeleted = false;
 		return await collection().insertOne(user);
 	}
-
 	return null;
 }
 
@@ -33,10 +32,20 @@ async function remove(id) {
     return await collection().updateOne({ '_id': new ObjectId(id) }, { $set: { isDeleted: true } });
 }
 
+function addToken(token) {
+	tokens.push(token);
+}
+
+function isValid(token) {
+	return tokens.includes(token);
+}
+
 module.exports = {
     getMany,
     getSingle,
     create,
     getUserByEmail,
-    remove
+    remove,
+	addToken,
+	isValid
 }

@@ -1,17 +1,16 @@
-function convertToResponseUser(user) {
+function convertToUserResponse(user) {
 	user.id = user._id;
 	delete user._id;
 }
 
-function convertToResponseUsers(users) {
+function convertToUsersResponse(users) {
     for(let user of users) {
-		user.id = user._id;
-		delete user._id;
+		convertToUserResponse(user);
 		delete user.password;
     }
 }
 
 module.exports = {
-	convertToResponseUser,
-	convertToResponseUsers
+	convertToUserResponse,
+	convertToUsersResponse
 };
