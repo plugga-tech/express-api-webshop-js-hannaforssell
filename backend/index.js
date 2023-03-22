@@ -8,6 +8,7 @@ const mongoService = require('./src/services/mongoService');
 const userRouter = require('./src/routes/userRoute');
 const productRouter = require('./src/routes/productRoute');
 const categoryRouter = require('./src/routes/categoryRoute');
+const orderRouter = require('./src/routes/orderRoute');
 
 require('dotenv').config();
 
@@ -25,6 +26,7 @@ app.get('/', (req, res) => {
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
 app.use('/api/categories', categoryRouter);
+app.use('/api/orders', orderRouter);
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
