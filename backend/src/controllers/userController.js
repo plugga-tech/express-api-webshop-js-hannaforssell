@@ -1,7 +1,7 @@
 const { convertToUserResponse, convertToUsersResponse } = require("../mappers/userMapper");
 const userService = require("../services/userService");
 const CryptoJS = require("crypto-js");
-const salt = 'pepper';
+const salt = process.env.SALT;
 const { v4: uuidv4 } = require('uuid');
 
 async function getMany(req, res, next) {
