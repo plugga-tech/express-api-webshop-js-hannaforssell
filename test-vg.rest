@@ -24,7 +24,7 @@ Content-Type: application/json
 
 {
   "name": "Test Testsson",
-  "email": "oi@mail.com",
+  "email": "test@mail.com",
   "password": "test"
 }
 
@@ -60,11 +60,11 @@ POST http://localhost:3000/api/products/add
 Content-Type: application/json
 
 {
-  "name": "Produkt 3",
+  "name": "Produkt 1",
   "description": "Beskrivning av produkt 1",
   "price": 100,
   "lager": 10,
-  "category": "641c129cdb3e0810a7781578",
+  "category": "641c208fd0d8cf287603713a",
   "token": "2e2a7fa8-6511-4037-af7a-31c6e9139e3d"
 }
 
@@ -117,15 +117,15 @@ POST http://localhost:3000/api/orders/add
 Content-Type: application/json
 
 {
-	"user": "641c0ca976f40729eeca201c",
+	"user": "641c21c4e957235f2fe763c5",
 	"products": [
     {
-      "productId": "641b199fb70d140f7700d1b4",
-      "quantity": 3
+      "productId": "641c21a6e957235f2fe763c3",
+      "quantity": 5
     },
     {
-      "productId": "641b199fb70d140f7700d1b4",
-      "quantity": 2
+      "productId": "641c21ace957235f2fe763c4",
+      "quantity": 1
     }
   ]
 }

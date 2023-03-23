@@ -41,6 +41,11 @@ async function create(req, res, next) {
 
 		let newOrder = mapToDbOrder(req.body);
 
+		for (const product of newOrder.products) {
+			let test = await productService.changeOnHand(product.productId, product.quantity);
+			console.log(test);
+		}
+
 		let result = await orderService.create(newOrder);
 		res.status(201);
 		res.json({ message: "success", id: result.insertedId });

@@ -20,9 +20,14 @@ async function getByCategory(categoryId) {
     return await collection().find({ 'category': new ObjectId(categoryId), 'isDeleted': false }, { projection: { isDeleted: 0 } }).toArray();
 }
 
+async function changeOnHand(productId, quantity) {
+	return await collection().updateOne({ '_id': new ObjectId(productId) }, { $inc: { lager: -quantity } });
+}
+
 module.exports = {
     getMany,
     getSingle,
     create,
     getByCategory,
+	changeOnHand
 }
