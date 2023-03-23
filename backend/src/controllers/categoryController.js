@@ -1,10 +1,12 @@
 const categoryService = require("../services/categoryService");
 const userService = require("../services/userService");
 const authorisationService = require("../services/authorisationService");
+const { convertToCategoriesResponse } = require("../mappers/categoryMapper");
 
 async function getMany(req, res, next) {
 	try {
 		let categories = await categoryService.getMany(req.body.category);
+		convertToCategoriesResponse(categories);
 		res.json(categories);
 	} catch (err) {
 		console.error(`Error while getting categories`, err.message);

@@ -13,7 +13,7 @@ POST http://localhost:3000/api/users/
 Content-Type: application/json
 
 {
-  "id": "64197570596ec4be0494b852"
+  "id": "641c135c001541b9391564ae"
 }
 
 ###
@@ -24,7 +24,7 @@ Content-Type: application/json
 
 {
   "name": "Test Testsson",
-  "email": "Test@mail.com",
+  "email": "oi@mail.com",
   "password": "test"
 }
 
@@ -51,7 +51,7 @@ GET http://localhost:3000/api/products
 ###
 
 // HÄMTA SPECIFIK PRODUKT
-GET http://localhost:3000/api/products/641afb9d8942bb4ee5b36d51
+GET http://localhost:3000/api/products/641c1341001541b9391564ac
 
 ###
 
@@ -64,14 +64,14 @@ Content-Type: application/json
   "description": "Beskrivning av produkt 1",
   "price": 100,
   "lager": 10,
-  "category": "6419b52ed2355db10ecf2435",
+  "category": "641c129cdb3e0810a7781578",
   "token": "2e2a7fa8-6511-4037-af7a-31c6e9139e3d"
 }
 
 ###
 
 // HÄMTA ALLA PRODUKTER FÖR EN SPECIFIK KATEGORI
-GET http://localhost:3000/api/products/category/6419b52ed2355db10ecf2435
+GET http://localhost:3000/api/products/category/641c129cdb3e0810a7781578
 
 ###
 
@@ -120,11 +120,11 @@ Content-Type: application/json
 	"user": "641b199fb70d140f7700d1b4",
 	"products": [
     {
-      "productId": "111",
-      "quantity": 1
+      "productId": "641b199fb70d140f7700d1b4",
+      "quantity": 3
     },
     {
-      "productId": "222",
+      "productId": "641b199fb70d140f7700d1b4",
       "quantity": 2
     }
   ]

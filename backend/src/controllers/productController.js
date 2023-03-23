@@ -2,6 +2,7 @@ const productService = require("../services/productService");
 const categoryService = require("../services/categoryService");
 const authorisationService = require("../services/authorisationService");
 const { convertToProductResponse, convertToProductsResponse } = require("../mappers/productMapper");
+const { ObjectId } = require("mongodb");
 
 async function getMany(req, res, next) {
 	try {
@@ -32,7 +33,6 @@ async function getSingle(req, res, next) {
 
 async function create(req, res, next) {
 	try {
-		// check correct & existing token
 		if (!authorisationService.isValid(req.body.token)) {
 			res.status(401);
 			res.json({ message: "invalid token" });
@@ -51,7 +51,7 @@ async function create(req, res, next) {
 			description: req.body.description,
 			price: req.body.price,
 			lager: req.body.lager,
-			category: req.body.category,
+			category: new ObjectId(req.body.category),
 		};
 
 		let result = await productService.create(newProduct);

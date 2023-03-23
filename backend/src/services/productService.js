@@ -17,7 +17,7 @@ async function create(product) {
 }
 
 async function getByCategory(categoryId) {
-    return await collection().find({ 'category': categoryId, 'isDeleted': false }, { projection: { isDeleted: 0 } }).toArray();
+    return await collection().find({ 'category': new ObjectId(categoryId), 'isDeleted': false }, { projection: { isDeleted: 0 } }).toArray();
 }
 
 module.exports = {

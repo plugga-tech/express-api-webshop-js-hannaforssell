@@ -1,6 +1,7 @@
 const orderService = require("../services/orderService");
 const userService = require("../services/userService");
 const authorisationService = require("../services/authorisationService");
+const { mapToDbOrder, convertToOrdersResponse } = require("../mappers/orderMapper");
 
 async function getAll(req, res, next) {
 	try {
@@ -11,6 +12,7 @@ async function getAll(req, res, next) {
 		}
 
 		let orders = await orderService.getAll();
+		convertToOrdersResponse(orders);
 		res.json(orders);
 	} catch (err) {
 		console.error(`Error while getting orders`, err.message);
@@ -22,10 +24,7 @@ async function create(req, res, next) {
 	try {
 		// todo: userId, productId must exist.
 		// better mapper
-		let newOrder = {
-			user: req.body.user,
-			products: req.body.products
-		};
+		let newOrder = mapToDbOrder(req.body);
 
 		let result = await orderService.create(newOrder);
 		res.status(201);
@@ -46,6 +45,7 @@ async function getByUser(req, res, next) {
 		}
 
 		let orders = await orderService.getByUser(req.body.user);
+		convertToOrdersResponse(orders);
 		res.json(orders);
 	} catch (err) {
 		console.error(`Error while getting orders`, err.message);

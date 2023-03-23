@@ -13,7 +13,7 @@ async function create(order) {
 }
 
 async function getByUser(userId) {
-    return await collection().find({ 'user': userId, 'isDeleted': false }, { projection: { isDeleted: 0 } }).toArray();
+    return await collection().find({ 'user': new ObjectId(userId), 'isDeleted': false }, { projection: { isDeleted: 0 } }).toArray();
 }
 
 module.exports = {
