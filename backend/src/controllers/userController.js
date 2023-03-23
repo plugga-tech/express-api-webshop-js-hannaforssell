@@ -1,5 +1,6 @@
 const { convertToUserResponse, convertToUsersResponse } = require("../mappers/userMapper");
 const userService = require("../services/userService");
+const authorisationService = require("../services/authorisationService");
 const CryptoJS = require("crypto-js");
 const salt = process.env.SALT;
 const { v4: uuidv4 } = require('uuid');
@@ -62,7 +63,7 @@ async function login(req, res, next) {
 			const decryptedPassword = CryptoJS.AES.decrypt(user.password, salt).toString(CryptoJS.enc.Utf8);
 			if (decryptedPassword == req.body.password) {
 				const token = uuidv4();
-				userService.addToken(token);
+				authorisationService.addToken(token);
 				
 				res.json({ message: "success", token: token });
 				return;

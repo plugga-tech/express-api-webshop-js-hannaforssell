@@ -3,8 +3,6 @@ const mongo = require('./mongoService');
 
 const collection = () => mongo.connection.collection('users');
 
-const tokens = [];
-
 async function getMany() {
     return await collection().find({ 'isDeleted': false }, { projection: { isDeleted: 0 } }).toArray();
 }
@@ -32,22 +30,10 @@ async function remove(id) {
     return await collection().updateOne({ '_id': new ObjectId(id) }, { $set: { isDeleted: true } });
 }
 
-function addToken(token) {
-	tokens.push(token);
-}
-
-function isValid(token) {
-	// todo: delete return true
-	return true;
-	return tokens.includes(token);
-}
-
 module.exports = {
     getMany,
     getSingle,
     create,
     getUserByEmail,
-    remove,
-	addToken,
-	isValid
+    remove
 }

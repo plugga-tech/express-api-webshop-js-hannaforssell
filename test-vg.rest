@@ -103,7 +103,7 @@ GET http://localhost:3000/api/categories
 //
 
 // HÄMTA ALLA ORDERS, KEY MÅSTE ANGES FÖR ATT FÅ TILLGÅNG TILL ORDERS
-GET http://localhost:3000/api/orders/all/2e2daea8-dc42-410e-8ff6-edaff9daa6f4
+GET http://localhost:3000/api/orders/all/b09b6eb8-c931-4b29-9ce0-49ea9ad1d74a
 
 ###
 

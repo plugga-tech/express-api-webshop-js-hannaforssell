@@ -1,6 +1,6 @@
 const productService = require("../services/productService");
 const categoryService = require("../services/categoryService");
-const userService = require("../services/userService");
+const authorisationService = require("../services/authorisationService");
 const { convertToProductResponse, convertToProductsResponse } = require("../mappers/productMapper");
 
 async function getMany(req, res, next) {
@@ -33,7 +33,7 @@ async function getSingle(req, res, next) {
 async function create(req, res, next) {
 	try {
 		// check correct & existing token
-		if (!userService.isValid(req.body.token)) {
+		if (!authorisationService.isValid(req.body.token)) {
 			res.status(401);
 			res.json({ message: "invalid token" });
 			return;
