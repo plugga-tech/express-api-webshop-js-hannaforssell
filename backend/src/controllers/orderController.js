@@ -1,5 +1,6 @@
 const orderService = require("../services/orderService");
 const userService = require("../services/userService");
+const productService = require("../services/productService");
 const authorisationService = require("../services/authorisationService");
 const { mapToDbOrder, convertToOrdersResponse } = require("../mappers/orderMapper");
 
@@ -22,8 +23,22 @@ async function getAll(req, res, next) {
 
 async function create(req, res, next) {
 	try {
-		// todo: userId, productId must exist.
-		// better mapper
+		let user = await userService.getSingle(req.body.user);
+		if (user == null) {
+			res.status(400);
+			res.json({ message: "user not found" });
+			return;
+		}
+
+		for (const reqProduct of req.body.products) {
+			let product = await productService.getSingle(reqProduct.productId);
+			if (product == null) {
+				res.status(400);
+				res.json({ message: `product: ${reqProduct.productId} not found` });
+				return;
+			}
+		}
+
 		let newOrder = mapToDbOrder(req.body);
 
 		let result = await orderService.create(newOrder);

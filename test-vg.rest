@@ -117,7 +117,7 @@ POST http://localhost:3000/api/orders/add
 Content-Type: application/json
 
 {
-	"user": "641b199fb70d140f7700d1b4",
+	"user": "641c0ca976f40729eeca201c",
 	"products": [
     {
       "productId": "641b199fb70d140f7700d1b4",
@@ -146,7 +146,7 @@ POST http://localhost:3000/api/orders/user
 Content-Type: application/json
 
 {
-    "user": "641b199fb70d140f7700d1b4",
+    "user": "641c0ca976f40729eeca201c",
     "token": "1234key1234"
 }
 ###
