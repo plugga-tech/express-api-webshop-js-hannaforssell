@@ -2,24 +2,29 @@
 <html lang="eng">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="description" content="API till en webbshop">
-  <meta name="keywords" content="API, webbshop">
-  <link rel="icon" href="data:;base64,=">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>API till en webbshop</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="API till en webbshop">
+	<meta name="keywords" content="API, webbshop">
+	<link rel="icon" href="data:;base64,=">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>API till en webbshop</title>
 </head>
 
 <body>
 
   
-  <form id="userForm"></form>
+	<form id="userForm"></form>
 
-  <div id="productDisplay">
-	<form id="categories"></form>
-  </div>
+	<label>Categories:
+		<select name="Categories" id="categoriesList">
+			<option selected disabled>Show all</option>
+		</select>
+	</label>
+
+	<div id="productContainer"></div>
+
   
-  <script type="module" src="/src/ts/main.ts"></script>
+	<script type="module" src="/src/ts/main.ts"></script>
   
 </body>
 

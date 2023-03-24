@@ -35,8 +35,8 @@ POST http://localhost:3000/api/users/login
 Content-Type: application/json
 
 {
-  "email": "email",
-  "password": "password"
+  "email": "test@mail.com",
+  "password": "test"
 }
 
 ###
@@ -64,8 +64,8 @@ Content-Type: application/json
   "description": "Beskrivning av produkt 1",
   "price": 100,
   "lager": 10,
-  "category": "641c208fd0d8cf287603713a",
-  "token": "2e2a7fa8-6511-4037-af7a-31c6e9139e3d"
+  "category": "641db869e6e681053c3149dc",
+  "token": "236b278e-2b1f-4902-a9e8-5d581bdb63c1"
 }
 
 ###
@@ -86,8 +86,8 @@ POST http://localhost:3000/api/categories/add
 Content-Type: application/json
 
 {
-  "name": "TEST",
-  "token": "20844d14-8191-4a1f-8fe5-c5f2860641cd"
+  "name": "cat3",
+  "token": "236b278e-2b1f-4902-a9e8-5d581bdb63c1"
 }
 
 ###

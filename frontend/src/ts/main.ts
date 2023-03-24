@@ -1,4 +1,5 @@
 import '../scss/style.scss'
+import { renderCategories, renderProducts } from './productDisplay';
 import * as backendService from './services/backendService'
 import { loginUser } from './userPage';
 
@@ -35,6 +36,8 @@ import { loginUser } from './userPage';
 //let newOrder = await backendService.addOrder('641c21c4e957235f2fe763c5', prodList);
 //let order = await backendService.getOrdersForUser('641c21c4e957235f2fe763c5', 'asd');
 
-console.log();
+//console.log();
 
 loginUser();
+renderCategories();
+renderProducts();

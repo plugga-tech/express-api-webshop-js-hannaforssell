@@ -15,8 +15,17 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
 
-  overflow: hidden;
+#productContainer{
+	display: flex;
+	justify-content: center;
+	margin-top: 50px;
+
+	.product {
+		padding: 30px;
+		border: 1px solid white;
+	}
 }
 
 @media (prefers-color-scheme: light) {
