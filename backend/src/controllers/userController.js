@@ -62,10 +62,10 @@ async function login(req, res, next) {
 		if (user != null) {
 			const decryptedPassword = CryptoJS.AES.decrypt(user.password, salt).toString(CryptoJS.enc.Utf8);
 			if (decryptedPassword == req.body.password) {
-				const token = uuidv4();
-				authorisationService.addToken(token);
+				//const token = uuidv4();
+				//authorisationService.addToken(token);
 				
-				res.json({ message: "success", token: token });
+				res.json({ message: "success" });
 				return;
 			}
 		}

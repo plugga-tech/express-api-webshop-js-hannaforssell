@@ -65,7 +65,7 @@ Content-Type: application/json
   "price": 100,
   "lager": 10,
   "category": "641db869e6e681053c3149dc",
-  "token": "236b278e-2b1f-4902-a9e8-5d581bdb63c1"
+  "token": "1234key1234"
 }
 
 ###
@@ -87,7 +87,7 @@ Content-Type: application/json
 
 {
   "name": "cat3",
-  "token": "236b278e-2b1f-4902-a9e8-5d581bdb63c1"
+  "token": "1234key1234"
 }
 
 ###

@@ -37,7 +37,7 @@ export async function renderProducts(ev: Event | null = null) {
 				<img src="/img/placeholder.jpg" alt="placeholder image" width="200">
 				<h3>${prod.name}</h3>
 				<p>Price: ${prod.price}:-</p>
-				<input type="number" placeholder="0">
+				<input type="number" placeholder="1">
 				<button>Add to cart</button>
 			</div>
 		`;

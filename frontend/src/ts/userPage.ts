@@ -47,11 +47,10 @@ async function loginUser() {
 	const loginUserEmail = document.getElementById('loginUserEmail') as HTMLInputElement;
 	const loginUserPassword = document.getElementById('loginUserPassword') as HTMLInputElement;
 
-	const userLoginResponse = await backendService.loginUser(loginUserEmail.value, loginUserPassword.value);
+	await backendService.loginUser(loginUserEmail.value, loginUserPassword.value);
 
 	const loggedInUser = {
 		email: loginUserEmail.value,
-		token: userLoginResponse.token
 	};
 
 	localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
