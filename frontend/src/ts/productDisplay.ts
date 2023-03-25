@@ -6,7 +6,7 @@ const productContainer = document.getElementById('productContainer') as HTMLDivE
 const categoriesList = document.getElementById('categoriesList') as HTMLSelectElement;
 
 categoriesList.addEventListener('change', (ev) => {
-	renderProducts(ev)
+	renderProducts(ev);
 });
 
 export async function renderCategories() {

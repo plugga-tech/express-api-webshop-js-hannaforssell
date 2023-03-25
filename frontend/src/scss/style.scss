@@ -17,14 +17,25 @@
   -webkit-text-size-adjust: 100%;
 }
 
-#productContainer{
+body {
 	display: flex;
-	justify-content: center;
-	margin-top: 50px;
+	flex-direction: column;
+	//justify-content: center;
+	text-align: center;
 
-	.product {
-		padding: 30px;
-		border: 1px solid white;
+	.user-form {
+		margin-bottom: 50px;
+	}
+
+	#productContainer{
+		display: flex;
+		justify-content: center;
+		margin-top: 50px;
+	
+		.product {
+			padding: 30px;
+			border: 1px solid white;
+		}
 	}
 }
 

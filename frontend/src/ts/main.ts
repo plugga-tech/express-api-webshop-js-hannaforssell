@@ -1,7 +1,7 @@
 import '../scss/style.scss'
 import { renderCategories, renderProducts } from './productDisplay';
 import * as backendService from './services/backendService'
-import { loginUser } from './userPage';
+import { createLoginForm } from './userPage';
 
 //let users = await backendService.getUsers();
 //let user = await backendService.getUser(users[1].id);
@@ -38,6 +38,6 @@ import { loginUser } from './userPage';
 
 //console.log();
 
-loginUser();
+createLoginForm();
 renderCategories();
 renderProducts();
