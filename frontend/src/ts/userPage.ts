@@ -11,6 +11,12 @@ export function createLoginForm() {
 			<h1>Logged in as: ${loggedInUser.email}</h1>
 			<button id="logoutUserBtn">Log out</button>
 		`;
+		const logoutUserBtn = document.getElementById('logoutUserBtn') as HTMLButtonElement;
+		logoutUserBtn.addEventListener('click', (ev) => {
+			ev.preventDefault();
+			localStorage.removeItem('loggedInUser');
+			createLoginForm();
+		});
 	} else {
 		userForm.innerHTML = /*html*/`
 		<h1>Log in</h1>
