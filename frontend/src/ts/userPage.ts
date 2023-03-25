@@ -1,13 +1,13 @@
 import { ILoggedInUser } from './models/ILoggedInUser';
 import * as backendService from './services/backendService'
 
-const userForm = document.getElementById('userForm') as HTMLFormElement;
+const userFormContainer = document.getElementById('userFormContainer') as HTMLDivElement;
 
 export function createLoginForm() {
 	const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser') || '{}') as ILoggedInUser;
 	
 	if (loggedInUser?.token != null) {
-		userForm.innerHTML = /*html*/`
+		userFormContainer.innerHTML = /*html*/`
 			<h1>Logged in as: ${loggedInUser.email}</h1>
 			<button id="logoutUserBtn">Log out</button>
 		`;
@@ -18,21 +18,25 @@ export function createLoginForm() {
 			createLoginForm();
 		});
 	} else {
-		userForm.innerHTML = /*html*/`
-		<h1>Log in</h1>
-		<label>
-			<input type="email" id="userLoginEmail" placeholder="Email" value="test@mail.com">
-		</label>
-		<label>
-			<input type="password" id="userLoginPassword" placeholder="Password">
-		</label>
-		<button id="createUserBtn">Not a member yet?</button>
-		<button type="submit">Log in</button>
+		userFormContainer.innerHTML = /*html*/`
+			<form id="loginUserForm" class="user-form">
+				<h1>Log in</h1>
+				<label>
+					<input type="email" id="loginUserEmail" placeholder="Email" value="test@mail.com">
+				</label>
+				<label>
+					<input type="password" id="loginUserPassword" placeholder="Password">
+				</label>
+				<button type="submit">Log in</button>
+				<button id="switchToCreateUserBtn">Not a member yet?</button>
+			</form>
 	`;
 
-		const createUserBtn = document.getElementById('createUserBtn') as HTMLButtonElement;
-		createUserBtn.addEventListener('click', createUser);
-		userForm.addEventListener('submit', (ev) => {
+		const switchToCreateUserBtn = document.getElementById('switchToCreateUserBtn') as HTMLButtonElement;
+		switchToCreateUserBtn.addEventListener('click', createUserForm);
+
+		const loginUserForm = document.getElementById('loginUserForm') as HTMLFormElement;
+		loginUserForm.addEventListener('submit', (ev) => {
 			ev.preventDefault();
 			loginUser();
 		});
@@ -40,13 +44,13 @@ export function createLoginForm() {
 }
 
 async function loginUser() {
-	const userLoginEmail = document.getElementById('userLoginEmail') as HTMLInputElement;
-	const userLoginPassword = document.getElementById('userLoginPassword') as HTMLInputElement;
+	const loginUserEmail = document.getElementById('loginUserEmail') as HTMLInputElement;
+	const loginUserPassword = document.getElementById('loginUserPassword') as HTMLInputElement;
 
-	const userLoginResponse = await backendService.loginUser(userLoginEmail.value, userLoginPassword.value);
+	const userLoginResponse = await backendService.loginUser(loginUserEmail.value, loginUserPassword.value);
 
 	const loggedInUser = {
-		email: userLoginEmail.value,
+		email: loginUserEmail.value,
 		token: userLoginResponse.token
 	};
 
@@ -55,22 +59,41 @@ async function loginUser() {
 	createLoginForm();
 }
 
-function createUser() {
-	userForm.innerHTML = /*html*/`
-		<h1>Create user</h1>
-		<label>
-			<input type="name" id="userLoginName" placeholder="Name">
-		</label>
-		<label>
-			<input type="email" id="userLoginEmail" placeholder="Email">
-		</label>
-		<label>
-			<input type="password" id="userLoginPassword" placeholder="Password">
-		</label>
-		<button id="loginUserBtn">Already a member?</button>
-		<button type="submit">Log in</button>
+function createUserForm() {
+	userFormContainer.innerHTML = /*html*/`
+		<form id="createUserForm" class="user-form">
+			<h1>Create user</h1>
+			<label>
+				<input type="name" id="createUserName" placeholder="Name">
+			</label>
+			<label>
+				<input type="email" id="createUserEmail" placeholder="Email">
+			</label>
+			<label>
+				<input type="password" id="createUserPassword" placeholder="Password">
+			</label>
+			<button type="submit">Create user</button>
+			<button id="switchToLoginUserBtn">Already a member?</button>
+		</form>
 	`;
 
-	const loginUserBtn = document.getElementById('loginUserBtn') as HTMLButtonElement;
-	loginUserBtn.addEventListener('click', createLoginForm);
+	const switchToLoginUserBtn = document.getElementById('switchToLoginUserBtn') as HTMLButtonElement;
+	switchToLoginUserBtn.addEventListener('click', createLoginForm);
+
+	const createUserForm = document.getElementById('createUserForm') as HTMLFormElement;
+	createUserForm.addEventListener('submit', (ev) => {
+		ev.preventDefault();
+		createUser();
+	});
+}
+
+async function createUser() {
+	const createUserName = document.getElementById('createUserName') as HTMLInputElement;
+	const createUserEmail = document.getElementById('createUserEmail') as HTMLInputElement;
+	const createUserPassword = document.getElementById('createUserPassword') as HTMLInputElement;
+
+	await backendService.addUser(createUserName.value, createUserEmail.value, createUserPassword.value);
+
+	createLoginForm();
+	
 }
