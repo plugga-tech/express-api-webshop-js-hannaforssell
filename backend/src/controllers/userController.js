@@ -58,6 +58,7 @@ async function create(req, res, next) {
 async function login(req, res, next) {
 	try {
 		let user = await userService.getUserByEmail(req.body.email);
+		console.log(user);
 		
 		if (user != null) {
 			const decryptedPassword = CryptoJS.AES.decrypt(user.password, salt).toString(CryptoJS.enc.Utf8);
@@ -65,7 +66,7 @@ async function login(req, res, next) {
 				//const token = uuidv4();
 				//authorisationService.addToken(token);
 				
-				res.json({ message: "success" });
+				res.json({ message: "success", id: user._id});
 				return;
 			}
 		}

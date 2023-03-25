@@ -4,7 +4,6 @@ import { IProduct } from '../models/IProduct';
 import { ICategory } from '../models/ICategory';
 import { IOrder } from '../models/IOrder';
 import { IIdResponse } from '../models/IIdResponse';
-import { ILoginResponse } from '../models/ILoginResponse';
 
 const BASE_URL = `http://localhost:3000/api`;
 
@@ -51,7 +50,7 @@ export async function addUser(name: string, email: string, password: string): Pr
     });
 }
 
-export async function loginUser(email: string, password: string): Promise<ILoginResponse> {
+export async function loginUser(email: string, password: string): Promise<IIdResponse> {
     return axios({
         method: 'post',
         url: BASE_URL + '/users/login',

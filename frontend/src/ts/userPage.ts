@@ -6,7 +6,7 @@ const userFormContainer = document.getElementById('userFormContainer') as HTMLDi
 export function createLoginForm() {
 	const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser') || '{}') as ILoggedInUser;
 	
-	if (loggedInUser?.token != null) {
+	if (loggedInUser?.email != null) {
 		userFormContainer.innerHTML = /*html*/`
 			<h1>Logged in as: ${loggedInUser.email}</h1>
 			<button id="logoutUserBtn">Log out</button>
@@ -47,10 +47,11 @@ async function loginUser() {
 	const loginUserEmail = document.getElementById('loginUserEmail') as HTMLInputElement;
 	const loginUserPassword = document.getElementById('loginUserPassword') as HTMLInputElement;
 
-	await backendService.loginUser(loginUserEmail.value, loginUserPassword.value);
+	let loginResponse = await backendService.loginUser(loginUserEmail.value, loginUserPassword.value);
 
 	const loggedInUser = {
 		email: loginUserEmail.value,
+		id: loginResponse.id
 	};
 
 	localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
