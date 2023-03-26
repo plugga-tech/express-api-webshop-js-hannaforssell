@@ -34,6 +34,13 @@ async function getSingle(req, res, next) {
 
 async function create(req, res, next) {
 	try {
+		if (req.body.name == '' || req.body.email == '' || req.body.password == ''
+		|| req.body.name == null || req.body.email == null || req.body.password == null) {
+			res.status(400);
+			res.json({ message: "Required fields must be present." });
+			return;
+		}
+
 		let newUser = {
 			name: req.body.name,
 			email: req.body.email,

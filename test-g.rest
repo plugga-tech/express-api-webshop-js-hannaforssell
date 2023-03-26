@@ -13,7 +13,7 @@ POST http://localhost:3000/api/users/
 Content-Type: application/json
 
 {
-  "id": "64196c6d2d432b5e5d9daa00"
+  "id": "642013d924138f1cbeebc819"
 }
 
 ###
@@ -23,9 +23,9 @@ POST http://localhost:3000/api/users/add
 Content-Type: application/json
 
 {
-  "name": "Three Threesson",
-  "email": "three@mail.com",
-  "password": "three"
+  "name": "Test",
+  "email": "test@mail.com",
+  "password": "test"
 }
 
 ###
@@ -35,8 +35,8 @@ POST http://localhost:3000/api/users/login
 Content-Type: application/json
 
 {
-  "email": "three@mail.com",
-  "password": "three"
+  "email": "test@mail.com",
+  "password": "test"
 }
 
 ###
@@ -53,7 +53,7 @@ GET http://localhost:3000/api/products
 ###
 
 // HÄMTA SPECIFIK PRODUKT
-GET http://localhost:3000/api/products/ // ID PÅ PRODUKT
+GET http://localhost:3000/api/products/6420152b24138f1cbeebc821
 
 ###
 
@@ -79,14 +79,14 @@ POST http://localhost:3000/api/orders/add
 Content-Type: application/json
 
 {
-  "user": "{{getUsers.response.body.$[0].id}}",
+  "user": "642013d924138f1cbeebc819",
       "products": [
     {
-      "productId": "// ID PÅ EN PRODUKT",
+      "productId": "6420152b24138f1cbeebc821",
       "quantity": 1
     },
     {
-      "productId": "// ID PÅ EN PRODUKT",
+      "productId": "6420152b24138f1cbeebc821",
       "quantity": 2
     }
   ]

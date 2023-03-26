@@ -24,6 +24,11 @@ export async function renderOrders(adminToken: string) {
 	
 	let userOrders = await backendService.getOrdersForUser(loggedInUser.id, adminToken);
 
+	if (userOrders == null) {
+		alert('Incorrect token.');
+		return;
+	}
+
 	let i = 1;
 
 	for (const order of userOrders) {

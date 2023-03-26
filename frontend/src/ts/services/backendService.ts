@@ -46,7 +46,7 @@ export async function addUser(name: string, email: string, password: string): Pr
     }).then((data) => {
         return data.data;
     }).catch(() => {
-        return {}
+        return null;
     });
 }
 
@@ -61,7 +61,7 @@ export async function loginUser(email: string, password: string): Promise<IIdRes
     }).then((data) => {	
         return data.data;
     }).catch(() => {
-        return {}
+        return null;
     });
 }
 
@@ -178,7 +178,7 @@ export async function addOrder(user: string, products: object[]): Promise<IIdRes
     }).then((data) => {
         return data.data;
     }).catch(() => {
-        return {}
+        return null;
     });
 }
 
@@ -193,6 +193,6 @@ export async function getOrdersForUser(user: string, token: string): Promise<IOr
     }).then((data) => {
         return data.data;
     }).catch(() => {
-        return {}
+        return null;
     });
 }

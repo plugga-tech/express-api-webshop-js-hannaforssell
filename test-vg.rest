@@ -13,7 +13,7 @@ POST http://localhost:3000/api/users/
 Content-Type: application/json
 
 {
-  "id": "641c21c4e957235f2fe763c5"
+  "id": "642013d924138f1cbeebc819"
 }
 
 ###
@@ -51,7 +51,7 @@ GET http://localhost:3000/api/products
 ###
 
 // HÄMTA SPECIFIK PRODUKT
-GET http://localhost:3000/api/products/641c1341001541b9391564ac
+GET http://localhost:3000/api/products/6420176a24138f1cbeebc825
 
 ###
 
@@ -60,18 +60,18 @@ POST http://localhost:3000/api/products/add
 Content-Type: application/json
 
 {
-  "name": "Produkt 1",
+  "name": "Produkt 3",
   "description": "Beskrivning av produkt 1",
   "price": 100,
   "lager": 10,
-  "category": "641db869e6e681053c3149dc",
+  "category": "642014f524138f1cbeebc81c",
   "token": "1234key1234"
 }
 
 ###
 
 // HÄMTA ALLA PRODUKTER FÖR EN SPECIFIK KATEGORI
-GET http://localhost:3000/api/products/category/641c129cdb3e0810a7781578
+GET http://localhost:3000/api/products/category/642014f524138f1cbeebc81c
 
 ###
 
@@ -86,7 +86,7 @@ POST http://localhost:3000/api/categories/add
 Content-Type: application/json
 
 {
-  "name": "cat3",
+  "name": "cat4",
   "token": "1234key1234"
 }
 
@@ -103,7 +103,7 @@ GET http://localhost:3000/api/categories
 //
 
 // HÄMTA ALLA ORDERS, KEY MÅSTE ANGES FÖR ATT FÅ TILLGÅNG TILL ORDERS
-GET http://localhost:3000/api/orders/all/b09b6eb8-c931-4b29-9ce0-49ea9ad1d74a
+GET http://localhost:3000/api/orders/all/1234key1234
 
 ###
 
@@ -117,14 +117,14 @@ POST http://localhost:3000/api/orders/add
 Content-Type: application/json
 
 {
-	"user": "641c21c4e957235f2fe763c5",
+	"user": "642013d924138f1cbeebc819",
 	"products": [
     {
-      "productId": "641c21a6e957235f2fe763c3",
+      "productId": "6420152b24138f1cbeebc821",
       "quantity": 5
     },
     {
-      "productId": "641c21ace957235f2fe763c4",
+      "productId": "6420152b24138f1cbeebc821",
       "quantity": 1
     }
   ]
@@ -137,7 +137,7 @@ POST http://localhost:3000/api/orders/user
 Content-Type: application/json
 
 {
-    "user": "641b199fb70d140f7700d1b4"
+    "user": "642013d924138f1cbeebc819"
 }
 ###
 
@@ -146,7 +146,7 @@ POST http://localhost:3000/api/orders/user
 Content-Type: application/json
 
 {
-    "user": "641c0ca976f40729eeca201c",
+    "user": "642013d924138f1cbeebc819",
     "token": "1234key1234"
 }
 ###

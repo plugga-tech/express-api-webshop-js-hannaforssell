@@ -34,8 +34,14 @@ async function sendOrderFromCart() {
 		delete cartItem.name;
 	}
 
-	await backendService.addOrder(loggedInUser.id, cart);
+	let orderResponse = await backendService.addOrder(loggedInUser.id, cart);
+
+	if (orderResponse == null) {
+		alert('Something went wrong.');
+		return;
+	}
 	
+	alert('Your order was sent.');
 	localStorage.removeItem('cart');
 	renderCart();
 }

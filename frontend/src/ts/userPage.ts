@@ -49,6 +49,11 @@ async function loginUser() {
 
 	let loginResponse = await backendService.loginUser(loginUserEmail.value, loginUserPassword.value);
 
+	if (loginResponse == null) {
+		alert('Wrong login information. Please try again.');
+		return;
+	}
+
 	const loggedInUser = {
 		email: loginUserEmail.value,
 		id: loginResponse.id
@@ -92,7 +97,12 @@ async function createUser() {
 	const createUserEmail = document.getElementById('createUserEmail') as HTMLInputElement;
 	const createUserPassword = document.getElementById('createUserPassword') as HTMLInputElement;
 
-	await backendService.addUser(createUserName.value, createUserEmail.value, createUserPassword.value);
+	let userResponse = await backendService.addUser(createUserName.value, createUserEmail.value, createUserPassword.value);
+
+	if (userResponse == null) {
+		alert('Cannot create user.');
+		return;
+	}
 
 	createLoginForm();
 	
