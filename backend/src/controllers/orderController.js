@@ -43,7 +43,6 @@ async function create(req, res, next) {
 
 		for (const product of newOrder.products) {
 			let test = await productService.changeOnHand(product.productId, product.quantity);
-			console.log(test);
 		}
 
 		let result = await orderService.create(newOrder);
