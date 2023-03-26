@@ -1,5 +1,3 @@
-import { ICartItem } from './models/ICartItem';
-
 export async function renderCart() {
 	const cartContainer = document.getElementById('cartContainer') as HTMLDivElement;
 	cartContainer.innerHTML = `<h2>Cart:</h2>`;

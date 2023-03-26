@@ -71,6 +71,3 @@ function addToCart() {
 		});
 	}
 }
-
-
-// todo: add a 'select all' and display all categories

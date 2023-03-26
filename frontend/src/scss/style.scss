@@ -27,7 +27,7 @@ body {
 		margin-bottom: 50px;
 	}
 
-	#productContainer{
+	#productContainer {
 		display: flex;
 		justify-content: center;
 		margin-top: 50px;
@@ -36,6 +36,10 @@ body {
 			padding: 30px;
 			border: 1px solid white;
 		}
+	}
+
+	#orderContainer {
+		margin-top: 50px;
 	}
 }
 
