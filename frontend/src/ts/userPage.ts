@@ -1,5 +1,5 @@
 import { ILoggedInUser } from './models/ILoggedInUser';
-import * as backendService from './services/backendService'
+import * as backendService from './services/backendService';
 
 const userFormContainer = document.getElementById('userFormContainer') as HTMLDivElement;
 

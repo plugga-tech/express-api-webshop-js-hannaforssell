@@ -61,7 +61,7 @@ function addToCart() {
 
 			savedCart.push({
 				name: productName.innerHTML,
-				amount: amountOfProducts,
+				quantity: amountOfProducts,
 				productId: productClass.id
 			});
 
