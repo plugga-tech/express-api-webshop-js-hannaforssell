@@ -19,7 +19,6 @@ export function renderCart() {
 
 	cartContainer.innerHTML += '<button id="sendOrderBtn">Send order</button>';
 	const sendOrderBtn = cartContainer.querySelector('#sendOrderBtn') as HTMLButtonElement;
-	console.log(sendOrderBtn);
 	
 	sendOrderBtn.addEventListener('click', (ev) => {
 		ev.preventDefault();

@@ -24,9 +24,24 @@ export async function renderOrders(adminToken: string) {
 	
 	let userOrders = await backendService.getOrdersForUser(loggedInUser.id, adminToken);
 
+	let i = 1;
+
 	for (const order of userOrders) {
+		console.log(order);
+		
+		
 		orderContainer.innerHTML += /*html*/`
-			<div>${order.products}</div>
+			<div>Order: ${i}
 		`;
+
+		for (const product of order.products) {
+			orderContainer.innerHTML += /*html*/`
+			${product.quantity} of id: ${product.productId}<br>
+		`;
+		}
+
+		orderContainer.innerHTML += /*html*/`</div>`;
+
+		i++;
 	}
 }
